@@ -52,6 +52,10 @@ if __name__ == "__main__":
         print("[INFO] Removing `minetest/games/devtest`...")
         rmtree("./minetest/games/devtest")
 
+    print("[INFO] Patching `minetest/util/buildbot/common.sh`")
+    unlink("./minetest/util/buildbot/common.sh")
+    copy("./util/buildbot/common.sh", "./minetest/util/buildbot/common.sh")
+
     print("\033[1;32mDONE! Now you can compile minetest in the" +
           " `./minetest` directory by following the instructions in" +
           f" `{CLONE_URL}`\033[m")
