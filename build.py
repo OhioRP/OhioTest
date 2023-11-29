@@ -31,14 +31,14 @@ if __name__ == "__main__":
     print("[INFO] Downloading OhioCraft...")
     ohiocraft_path = "./minetest/games/ohiocraft"
     if not isdir("./ohiocraft"):
-        if isdir(ohiocraft_path):
-            rmtree(ohiocraft_path)
         run(["git", "clone", "https://github.com/OhioRP/OhioCraft",
              "./ohiocraft"])
         run(["bash", "./build.sh"], cwd="./ohiocraft")
-        copytree("./ohiocraft/Build", ohiocraft_path)
     else:
         print(f"[WARN] `{ohiocraft_path}` already exists, not redownloading...")
+    if isdir(ohiocraft_path):
+        rmtree(ohiocraft_path)
+    copytree("./ohiocraft/Build", ohiocraft_path)
 
     irrlicht_path = "./minetest/lib/irrlichtmt"
     print("[INFO] Downloading Irrlicht...")
